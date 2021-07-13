@@ -15,6 +15,7 @@ class CreateAbsensTable extends Migration
     {
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_siswa');
             $table->string('alamat_siswa');
             $table->string('metode_les');
@@ -22,7 +23,7 @@ class CreateAbsensTable extends Migration
             $table->string('materi_ajar');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 
